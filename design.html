@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Design</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="design-container">
+        <aside class="controls-panel">
+            <h2 class="gradient-text">Design Tools</h2>
+            <div class="control-group">
+<div class="edit-container">
+    <label for="Quote">Edit Quote:</label>
+    <input type="text" id="editQuote" />
+
+    <label for="Author">Edit Author:</label>
+    <input type="text" id="editAuthor" />
+</div>
+
+                <!-- Background Color Option -->
+                <label>Background Color</label>
+                <input type="color" id="bgColor" class="metallic-input">
+                
+                <!-- Background Image Option -->
+                <label>Background Image</label>
+                <div class="background-image-selector">
+                    <div class="background-image-grid">
+                        <div class="background-image-option" data-src="images/color1.jpg">
+                            <img src="images/color1.jpg" alt="Background 1">
+                        </div>
+                        <div class="background-image-option" data-src="images/color2.jpg">
+                            <img src="images/color2.jpg" alt="Background 2">
+                        </div>
+                        <div class="background-image-option" data-src="images/color3.jpg">
+                            <img src="images/color3.jpg" alt="Background 3">
+                        </div>
+                        <div class="background-image-option" data-src="images/color4.jpg">
+                            <img src="images/color4.jpg" alt="Background 4">
+                        </div>
+                    </div>
+                    <button id="clearBackgroundBtn" class="metallic-button">
+                        <span class="btn-gradient">Clear Background</span>
+                    </button>
+                </div>
+                
+                <!-- Rest of the existing controls -->
+                <label>Text Color</label>
+                <input type="color" id="textColor" class="metallic-input">
+                
+                <label>Font Family</label>
+                <select id="fontFamily" class="metallic-input">
+                    <option value="Space Mono">Space Mono</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+                
+                <label>Font Size</label>
+                <input type="range" id="fontSize" min="16" max="72" class="metallic-input">
+                
+                <label>Text Alignment</label>
+                <div class="alignment-controls">
+                    <button id="alignLeft" class="alignment-btn" data-align="left">Left</button>
+                    <button id="alignCenter" class="alignment-btn" data-align="center">Center</button>
+                    <button id="alignRight" class="alignment-btn" data-align="right">Right</button>
+                </div>
+                
+                <button id="downloadBtn" class="metallic-button">
+                    <span class="btn-gradient">Download Design</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="preview-container" id="previewContainer">
+            <div id="quotePreview"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
