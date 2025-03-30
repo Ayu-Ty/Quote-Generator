@@ -5,77 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customize Your Design</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="design-container">
         <aside class="controls-panel">
             <h2 class="gradient-text">Design Tools</h2>
-            <div class="control-group">
-<div class="edit-container">
-    <label for="Quote">Edit Quote:</label>
-    <input type="text" id="editQuote" />
 
-    <label for="Author">Edit Author:</label>
-    <input type="text" id="editAuthor" />
-</div>
+             <div class="control-group history-controls">
+                <button id="undoBtn" class="metallic-button small-btn" disabled>Undo</button>
+                <button id="redoBtn" class="metallic-button small-btn" disabled>Redo</button>
+            </div>
 
-                <!-- Background Color Option -->
-                <label>Background Color</label>
-                <input type="color" id="bgColor" class="metallic-input">
-                
-                <!-- Background Image Option -->
-                <label>Background Image</label>
-                <div class="background-image-selector">
-                    <div class="background-image-grid">
-                        <div class="background-image-option" data-src="images/color1.jpg">
-                            <img src="images/color1.jpg" alt="Background 1">
+            <details class="control-section" open>
+                <summary>Edit Text</summary>
+                <div class="control-group">
+                    <label for="editQuote">Edit Quote:</label>
+                    <textarea id="editQuote" class="metallic-input" rows="3" aria-label="Edit Quote Text"></textarea>
+                    <div id="editWordCount" class="word-count">0 / 20 words</div>
+
+                    <label for="editAuthor">Edit Author:</label>
+                    <input type="text" id="editAuthor" class="metallic-input" aria-label="Edit Author Name"/>
+                </div>
+            </details>
+
+             <details class="control-section" open>
+                <summary>Background</summary>
+                 <div class="control-group">
+                    <label for="bgColor">Background Color:</label>
+                    <input type="color" id="bgColor" value="#1a1a1a" class="metallic-input color-input" aria-label="Background Color Picker">
+                </div>
+                <div class="control-group">
+                     <label for="bgImageUpload">Upload Background Image:</label>
+                     <input type="file" id="bgImageUpload" accept="image/*" class="metallic-input file-input" aria-label="Upload Background Image">
+                </div>
+                 <div class="control-group">
+                    <label>Preset Background Images:</label>
+                    <div class="background-image-selector">
+                        <div class="background-image-grid">
+                            <div class="background-image-option" data-src="images/color1.svg" aria-label="Select Background Image 1"><img src="images/color1.svg" alt="Background 1"></div>
+                            <div class="background-image-option" data-src="images/color2.svg" aria-label="Select Background Image 2"><img src="images/color2.svg" alt="Background 2"></div>
+                            <div class="background-image-option" data-src="images/color3.svg" aria-label="Select Background Image 3"><img src="images/color3.svg" alt="Background 3"></div>
+                            <div class="background-image-option" data-src="images/color4.svg" aria-label="Select Background Image 4"><img src="images/color4.svg" alt="Background 4"></div>
                         </div>
-                        <div class="background-image-option" data-src="images/color2.jpg">
-                            <img src="images/color2.jpg" alt="Background 2">
-                        </div>
-                        <div class="background-image-option" data-src="images/color3.jpg">
-                            <img src="images/color3.jpg" alt="Background 3">
-                        </div>
-                        <div class="background-image-option" data-src="images/color4.jpg">
-                            <img src="images/color4.jpg" alt="Background 4">
-                        </div>
+                        <button id="clearBackgroundBtn" class="metallic-button small-btn">
+                            <span class="btn-gradient">Clear Background</span>
+                        </button>
                     </div>
-                    <button id="clearBackgroundBtn" class="metallic-button">
-                        <span class="btn-gradient">Clear Background</span>
-                    </button>
                 </div>
-                
-                <!-- Rest of the existing controls -->
-                <label>Text Color</label>
-                <input type="color" id="textColor" class="metallic-input">
-                
-                <label>Font Family</label>
-                <select id="fontFamily" class="metallic-input">
-                    <option value="Space Mono">Space Mono</option>
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                </select>
-                
-                <label>Font Size</label>
-                <input type="range" id="fontSize" min="16" max="72" class="metallic-input">
-                
-                <label>Text Alignment</label>
-                <div class="alignment-controls">
-                    <button id="alignLeft" class="alignment-btn" data-align="left">Left</button>
-                    <button id="alignCenter" class="alignment-btn" data-align="center">Center</button>
-                    <button id="alignRight" class="alignment-btn" data-align="right">Right</button>
+            </details>
+
+            <details class="control-section" open>
+                <summary>Text Style</summary>
+                <div class="control-group">
+                    <label for="textColor">Text Color:</label>
+                    <input type="color" id="textColor" value="#ffffff" class="metallic-input color-input" aria-label="Text Color Picker">
                 </div>
-                
+                <div class="control-group">
+                     <label for="fontFamily">Font Family:</label>
+                    <select id="fontFamily" class="metallic-input" aria-label="Font Family Selector">
+                        <option value="'Space Mono', monospace" style="font-family: 'Space Mono', monospace;">Space Mono</option>
+                        <option value="'Roboto', sans-serif" style="font-family: 'Roboto', sans-serif;">Roboto</option>
+                        <option value="'Merriweather', serif" style="font-family: 'Merriweather', serif;">Merriweather</option>
+                        <option value="'Lobster', cursive" style="font-family: 'Lobster', cursive;">Lobster</option>
+                        <option value="Arial, sans-serif" style="font-family: Arial, sans-serif;">Arial</option>
+                        <option value="'Times New Roman', Times, serif" style="font-family: 'Times New Roman', Times, serif;">Times New Roman</option>
+                    </select>
+                </div>
+                 <div class="control-group">
+                    <label for="fontSize">Font Size: <span id="fontSizeValue">24</span>px</label>
+                    <input type="range" id="fontSize" min="12" max="80" value="24" class="metallic-slider" aria-label="Font Size Slider">
+                </div>
+                 <div class="control-group">
+                     <label>Text Format:</label>
+                     <div class="text-format-controls">
+                        <button id="boldBtn" class="format-btn" data-format="bold" aria-label="Toggle Bold Text">B</button>
+                        <button id="italicBtn" class="format-btn" data-format="italic" aria-label="Toggle Italic Text">I</button>
+                     </div>
+                 </div>
+            </details>
+
+             <details class="control-section" open>
+                <summary>Layout</summary>
+                <div class="control-group">
+                    <label>Text Alignment:</label>
+                    <div class="alignment-controls">
+                        <button id="alignLeft" class="alignment-btn" data-align="left" aria-label="Align Text Left">Left</button>
+                        <button id="alignCenter" class="alignment-btn active" data-align="center" aria-label="Align Text Center">Center</button>
+                        <button id="alignRight" class="alignment-btn" data-align="right" aria-label="Align Text Right">Right</button>
+                    </div>
+                </div>
+                 <div class="control-group">
+                    <label>Aspect Ratio:</label>
+                     <div class="aspect-ratio-controls">
+                        <label><input type="radio" name="aspectRatio" value="free" checked> Free</label>
+                        <label><input type="radio" name="aspectRatio" value="square"> Square (1:1)</label>
+                        <label><input type="radio" name="aspectRatio" value="landscape"> Landscape (16:9)</label>
+                        <label><input type="radio" name="aspectRatio" value="portrait"> Portrait (9:16)</label>
+                    </div>
+                </div>
+            </details>
+
+             <div class="control-group download-section">
                 <button id="downloadBtn" class="metallic-button">
                     <span class="btn-gradient">Download Design</span>
+                     <span class="loading-spinner" style="display: none;"></span>
                 </button>
             </div>
         </aside>
 
-        <div class="preview-container" id="previewContainer">
-            <div id="quotePreview"></div>
+        <div class="preview-panel">
+             <div class="preview-container" id="previewContainer">
+                 <div id="aspectRatioWrapper" class="aspect-ratio-free">
+                    <div id="quotePreview">
+                         </div>
+                 </div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
