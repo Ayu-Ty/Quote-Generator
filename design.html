@@ -15,18 +15,12 @@
         <aside class="controls-panel">
             <h2 class="gradient-text">Design Tools</h2>
 
-             <div class="control-group history-controls">
-                <button id="undoBtn" class="metallic-button small-btn" disabled>Undo</button>
-                <button id="redoBtn" class="metallic-button small-btn" disabled>Redo</button>
-            </div>
-
             <details class="control-section" open>
                 <summary>Edit Text</summary>
                 <div class="control-group">
                     <label for="editQuote">Edit Quote:</label>
                     <textarea id="editQuote" class="metallic-input" rows="3" aria-label="Edit Quote Text"></textarea>
                     <div id="editWordCount" class="word-count">0 / 20 words</div>
-
                     <label for="editAuthor">Edit Author:</label>
                     <input type="text" id="editAuthor" class="metallic-input" aria-label="Edit Author Name"/>
                 </div>
@@ -83,8 +77,9 @@
                      <label>Text Format:</label>
                      <div class="text-format-controls">
                         <button id="boldBtn" class="format-btn" data-format="bold" aria-label="Toggle Bold Text">B</button>
+                        <button id="underlineBtn" class="format-btn" data-format="underline" aria-label="Toggle Underline Text">U</button>
                         <button id="italicBtn" class="format-btn" data-format="italic" aria-label="Toggle Italic Text">I</button>
-                     </div>
+                    </div>
                  </div>
             </details>
 
@@ -121,7 +116,9 @@
              <div class="preview-container" id="previewContainer">
                  <div id="aspectRatioWrapper" class="aspect-ratio-free">
                     <div id="quotePreview">
-                         </div>
+                         <div class="quote-text"></div>
+                         <div class="author-name"></div>
+                    </div>
                  </div>
             </div>
         </div>
